@@ -5,6 +5,9 @@ import Logout from "../pages/Logout";
 import GetUserName from "../components/GetUserName";
 
 export default function Navbar() {
+  var isLoggedIn = CheckLogin();
+  console.log(isLoggedIn);
+
   // var userName = GetUserName();
   // console.log(userName);
 
@@ -18,8 +21,7 @@ export default function Navbar() {
         <CustomLink to="/about">About</CustomLink>
         <CustomLink to="/login">Login</CustomLink>
         <CustomLink to="/register">Register</CustomLink>
-
-        <button>Logout</button>
+        <button onClick={Logout}>Logout</button>
       </ul>
     </nav>
   );
@@ -31,19 +33,17 @@ function CustomLink({ to, children, ...props }) {
 
   const doNotShowOnLoggedIn = ["login", "register"];
   const currentPathName = resolvedPath.pathname.substring(1);
-  var isLoggedInTemplate = "";
-  var isLoggedIn = CheckLogin();
-  console.log("hi " + isLoggedIn);
 
-  if (isLoggedIn) {
-    isLoggedInTemplate = doNotShowOnLoggedIn.includes(currentPathName) ? "doNotDisplayOnLoggedIn" : "displayOnLoggedIn";
-  } else {
-    isLoggedInTemplate = "";
-  }
+  var isLoggedInTemplate = "";
+
+  // if (isLoggedIn) {
+  //   isLoggedInTemplate = doNotShowOnLoggedIn.includes(currentPathName) ? "doNotDisplayOnLoggedIn" : "displayOnLoggedIn";
+  // }
 
   const isActiveTemplate = isActive ? "active" : "";
   // const isLoggedInTemplate = isLoggedIn ? "Yes" : "No";
-  const classes = `${isActiveTemplate} ${isLoggedInTemplate}`;
+  // const classes = `${isActiveTemplate} ${isLoggedInTemplate}`;
+  const classes = `${isActiveTemplate}`;
 
   return (
     <li className={classes}>
