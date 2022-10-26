@@ -7,7 +7,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
 
 export const CheckLogin = () => {
+  const [user, loading, error] = useAuthState(auth);
+
   var userAuthState = useAuthState(auth)[0];
+  console.log(user?.email);
 
   if (userAuthState != null) {
     return true;
