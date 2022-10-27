@@ -5,11 +5,9 @@ import Logout from "../pages/Logout";
 import GetUserName from "../components/GetUserName";
 
 export default function Navbar() {
-  // var userName = GetUserName();
-  // console.log(userName);
   var isLoggedIn = CheckLogin();
   var userName = GetUserName();
-  console.log("outer nav" + userName);
+  console.log("NAVBAR " + userName);
 
   // Now I need to update the nav to have the user name in it
 
