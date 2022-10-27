@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+name not named
+bundle.js:188 leo@email.com
+bundle.js:493 name not named
+bundle.js:284 name is Leonardo
+bundle.js:188 leo@email.com
+bundle.js:493 name not named
+bundle.js:284 name is Leonardo
+bundle.js:188 leo@email.com
+bundle.js:493 name not named
+bundle.js:284 name is Leonardo

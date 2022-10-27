@@ -10,7 +10,7 @@ export const CheckLogin = () => {
   const [user, loading, error] = useAuthState(auth);
 
   var userAuthState = useAuthState(auth)[0];
-  console.log(user?.email);
+  console.log("check login " + user?.email);
 
   if (userAuthState != null) {
     return true;

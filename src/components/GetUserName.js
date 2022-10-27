@@ -9,8 +9,9 @@ import React, { useEffect, useState } from "react";
 export default function GetUserName() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
+  var userName = "not named";
 
-  console.log(user?.email);
+  //   console.log(user?.email);
 
   const fetchUserName = async () => {
     try {
@@ -18,12 +19,13 @@ export default function GetUserName() {
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
       setName(data.name);
-      console.log(data.name);
+      userName = data.name;
+      console.log("inner " + data.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
     }
   };
 
   fetchUserName();
+  return userName;
 }
