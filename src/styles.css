@@ -58,6 +58,14 @@ body {
   display: none;
 }
 
+.doNotDisplayOnLoggedOut {
+  display: none;
+}
+
 .displayOnLoggedIn {
+  display: block;
+}
+
+.displayOnLoggedOut {
   display: block;
 }

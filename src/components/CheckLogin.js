@@ -6,10 +6,11 @@ import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";
 
-export const CheckLogin = () => {
+export const CheckLogin = async () => {
   const [user, loading, error] = useAuthState(auth);
 
   var userAuthState = useAuthState(auth)[0];
+
   console.log("CHECKLOGIN " + user?.email);
 
   if (userAuthState != null) {
