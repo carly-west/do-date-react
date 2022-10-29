@@ -47,7 +47,7 @@ export default function Navbar() {
       </Link>
       <ul>
         <li>
-          <Link to={"/about"}>About</Link>
+          <Link to={"/classEditor"}>Class Editor</Link>
         </li>
         <li className={isLoggedIn ? "doNotDisplayOnLoggedOut" : "displayOnLoggedOut"}>
           <Link to={"/login"}>Login</Link>

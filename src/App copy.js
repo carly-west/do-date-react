@@ -15,7 +15,7 @@ function App() {
       Component = <Pricing />;
       break;
     case "/about":
-      Component = <About />;
+      Component = <ClassEditor />;
       break;
   }
 
