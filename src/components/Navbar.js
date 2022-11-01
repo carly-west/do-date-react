@@ -46,20 +46,23 @@ export default function Navbar() {
         <img src={logo} alt={"DoDate logo"} id={"logo"} />
       </Link>
       <ul>
-        <li>
+        <li className={isLoggedIn ? "display" : "doNotDisplay"}>
+          <Link to={"/AssignmentTracker"}>Assignment Tracker</Link>
+        </li>
+        <li className={isLoggedIn ? "display" : "doNotDisplay"}>
           <Link to={"/classEditor"}>Class Editor</Link>
         </li>
-        <li className={isLoggedIn ? "doNotDisplayOnLoggedOut" : "displayOnLoggedOut"}>
+        <li className={isLoggedIn ? "doNotDisplay" : "display"}>
           <Link to={"/login"}>Login</Link>
         </li>
-        <li className={isLoggedIn ? "doNotDisplayOnLoggedOut" : "displayOnLoggedOut"}>
+        <li className={isLoggedIn ? "doNotDisplay" : "display"}>
           <Link to={"/register"}>Register</Link>
         </li>
 
         <li>
-          <a className={isLoggedIn ? "displayOnLoggedIn" : "doNotDisplayOnLoggedIn"}>{name}</a>
+          <a className={isLoggedIn ? "display" : "doNotDisplay"}>{name}</a>
         </li>
-        <button className={isLoggedIn ? "displayOnLoggedIn" : "doNotDisplayOnLoggedIn"} onClick={Logout}>
+        <button className={isLoggedIn ? "display" : "doNotDisplay"} onClick={Logout}>
           Logout
         </button>
       </ul>

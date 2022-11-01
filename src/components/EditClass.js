@@ -3,31 +3,31 @@ import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } fro
 import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
+import SetClassDropdown from "./SetClassDropdown.js";
 
 export default function EditClass() {
   const [updateClassName, updateClass] = useState("");
   const [user, loading, error] = useAuthState(auth);
 
-  const setDropdown = async () => {
-    const classRef = doc(db, "classes", user.email);
-    const classDoc = await getDoc(classRef);
-    const classObject = classDoc.data();
-    // console.log(classObject);
+  // const setDropdown = async () => {
+  //   const classRef = doc(db, "classes", user.email);
+  //   const classDoc = await getDoc(classRef);
+  //   const classObject = classDoc.data();
 
-    // Display classes in dropdown
-    const select = document.getElementById("classesDropDown");
-    for (const [key, value] of Object.entries(classObject)) {
-      const opt = document.createElement("option");
-      opt.value = key;
-      opt.innerHTML = value.Name;
-      select.appendChild(opt);
-    }
-  };
+  //   // Display classes in dropdown
+  //   const select = document.getElementById("classesDropDown");
+  //   for (const [key, value] of Object.entries(classObject)) {
+  //     const opt = document.createElement("option");
+  //     opt.value = key;
+  //     opt.innerHTML = value.Name;
+  //     select.appendChild(opt);
+  //   }
+  // };
 
   // Only sets dropdown when user is populated
-  if (user) {
-    setDropdown();
-  }
+  // if (user) {
+  //   setDropdown();
+  // }
 
   function handleSubmit(e) {
     console.log("hi");
@@ -66,7 +66,7 @@ export default function EditClass() {
       <div className="edit-class">
         <h2>Edit Class</h2>
         <label htmlFor="classes">Class to Edit</label>
-        <select name="classes" id="classesDropDown"></select>
+        <SetClassDropdown />
 
         <label htmlFor="classNameEdit">New Class Name</label>
         <input type="text" name="classNameEdit" id="classNameEdit" value={updateClassName} onChange={(e) => updateClass(e.target.value)} required />

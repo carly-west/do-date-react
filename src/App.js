@@ -6,6 +6,7 @@ import ClassEditor from "./pages/ClassEditor";
 import Login from "./pages/Login";
 import "./styles.css";
 import { Route, Routes } from "react-router-dom";
+import AssignmentTracker from "./pages/AssignmentTracker";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/assignmentTracker" element={<AssignmentTracker />} />
           <Route path="/classEditor" element={<ClassEditor />} />
           <Route path="/login" element={<Login />} />
         </Routes>
