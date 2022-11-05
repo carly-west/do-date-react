@@ -9,7 +9,6 @@ export default function AddAssignment() {
   const [user, loading, error] = useAuthState(auth);
 
   function handleSubmit(e) {
-    console.log("hiii");
     e.preventDefault();
 
     const editClass = async () => {

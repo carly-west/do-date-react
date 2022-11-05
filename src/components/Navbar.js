@@ -63,7 +63,7 @@ export default function Navbar() {
           <a>{name}</a>
         </li>
         <li className={isLoggedIn ? "display logoutButton" : "doNotDisplay"} onClick={Logout}>
-          <a>Logout</a>
+          <Link to={"/login"}>Logout</Link>
         </li>
       </ul>
     </nav>

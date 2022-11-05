@@ -9,8 +9,6 @@ import SetClassDropdown from "./SetClassDropdown.js";
 import { Navigate } from "react-router-dom";
 
 export default function RegisterUser() {
-  console.log("hi");
-
   var firstName = document.getElementById("firstName").value;
   var email = document.getElementById("email").value;
   var password = document.getElementById("psw").value;

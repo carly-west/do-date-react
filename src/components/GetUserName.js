@@ -20,7 +20,6 @@ export default function GetUserName() {
       const data = doc.docs[0].data();
       setName(data.name);
       userName = data.name;
-      console.log("FETCH USERNAME " + data.name);
     } catch (err) {
       console.error(err);
     }

@@ -1,10 +1,9 @@
-import { Header } from "./components/Header";
+import "./styles.css";
 import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import ClassEditor from "./pages/ClassEditor";
 import Login from "./pages/Login";
-import "./styles.css";
 import { Route, Routes } from "react-router-dom";
 import AssignmentTracker from "./pages/AssignmentTracker";
 

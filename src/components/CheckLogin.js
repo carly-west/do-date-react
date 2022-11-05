@@ -11,8 +11,6 @@ export const CheckLogin = async () => {
 
   var userAuthState = useAuthState(auth)[0];
 
-  console.log("CHECKLOGIN " + user?.email);
-
   if (userAuthState != null) {
     return true;
   } else {
