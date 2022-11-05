@@ -6,31 +6,9 @@ import React, { useState } from "react";
 import SetClassDropdown from "./SetClassDropdown.js";
 
 export default function EditClass() {
-  const [updateClassName, updateClass] = useState("");
   const [user, loading, error] = useAuthState(auth);
 
-  // const setDropdown = async () => {
-  //   const classRef = doc(db, "classes", user.email);
-  //   const classDoc = await getDoc(classRef);
-  //   const classObject = classDoc.data();
-
-  //   // Display classes in dropdown
-  //   const select = document.getElementById("classesDropDown");
-  //   for (const [key, value] of Object.entries(classObject)) {
-  //     const opt = document.createElement("option");
-  //     opt.value = key;
-  //     opt.innerHTML = value.Name;
-  //     select.appendChild(opt);
-  //   }
-  // };
-
-  // Only sets dropdown when user is populated
-  // if (user) {
-  //   setDropdown();
-  // }
-
   function handleSubmit(e) {
-    console.log("hi");
     e.preventDefault();
 
     var classToBeEdited;
@@ -69,7 +47,7 @@ export default function EditClass() {
         <SetClassDropdown />
 
         <label htmlFor="classNameEdit">New Class Name</label>
-        <input type="text" name="classNameEdit" id="classNameEdit" value={updateClassName} onChange={(e) => updateClass(e.target.value)} required />
+        <input type="text" name="classNameEdit" id="classNameEdit" required />
 
         <button type="submit" id="editClass" name="createClass" className="createclass-btn">
           Edit Class

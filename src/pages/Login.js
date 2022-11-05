@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { db, auth, app } from "../components/firebase";
+import { Navigate } from "react-router-dom";
 
 // Import the functions you need from the SDKs you need
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
@@ -15,13 +16,13 @@ export default function Login() {
         // Signed in
         const user = userCredential.user;
         console.log("user logged- sign in with email and password");
-        console.log(user);
+        return <Navigate to="/classEditor" />;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
         console.log("unsuccessful creation");
+        return <Navigate to="/login" />;
       });
   };
 

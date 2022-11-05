@@ -1,6 +1,6 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CheckLogin } from "./CheckLogin";
-import logo from "../images/dodatelogo.jpeg";
+import logo from "../images/dodate-logo.png";
 import Logout from "../pages/Logout";
 import GetUserName from "../components/GetUserName";
 
@@ -59,12 +59,12 @@ export default function Navbar() {
           <Link to={"/register"}>Register</Link>
         </li>
 
-        <li>
-          <a className={isLoggedIn ? "display" : "doNotDisplay"}>{name}</a>
+        <li className={isLoggedIn ? "display" : "doNotDisplay"}>
+          <a>{name}</a>
         </li>
-        <button className={isLoggedIn ? "display" : "doNotDisplay"} onClick={Logout}>
-          Logout
-        </button>
+        <li className={isLoggedIn ? "display logoutButton" : "doNotDisplay"} onClick={Logout}>
+          <a>Logout</a>
+        </li>
       </ul>
     </nav>
   );

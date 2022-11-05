@@ -12,24 +12,29 @@ export default function ClassLegend() {
     const classDoc = await getDoc(classRef);
     const classObject = classDoc.data();
 
-    // Display classes in legend
-    const classLegend = document.getElementById("classList");
+    if (classObject) {
+      // Display classes in legend
+      const classLegend = document.getElementById("classList");
 
-    // Clears options so everything is only rendered once
-    const classLegendAll = document.querySelectorAll("#classList li");
-    classLegendAll.forEach((o) => o.remove());
+      // Clears options so everything is only rendered once
+      const classLegendAll = document.querySelectorAll("#classList li");
+      classLegendAll.forEach((o) => o.remove());
 
-    for (const [key, value] of Object.entries(classObject)) {
-      const listItem = document.createElement("li");
-      listItem.value = key;
-      listItem.innerHTML = value.Name;
-      classLegend.appendChild(listItem);
-      listItem.setAttribute("class", "class-color-" + value.Color);
+      for (const [key, value] of Object.entries(classObject)) {
+        const listItem = document.createElement("li");
+        listItem.value = key;
+        listItem.innerHTML = value.Name;
+        classLegend.appendChild(listItem);
+        listItem.setAttribute("class", "class-color-" + value.Color);
+      }
     }
   };
+
+  //   Only call function if state renders that user is logged in
   if (user) {
     classLegend();
   }
+
   return (
     <div id="class-legend" className="class-legend">
       <h3>Class Legend</h3>
