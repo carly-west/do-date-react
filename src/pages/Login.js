@@ -23,6 +23,9 @@ export default function Login() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("unsuccessful creation");
+        document.getElementById("password").style.borderColor = "red";
+        document.getElementById("incorrectInputText").innerHTML = "The email or password you entered is incorrect.";
+        document.getElementById("incorrectInputText").style.color = "red";
         return navigate("/login");
       });
   };
@@ -34,10 +37,11 @@ export default function Login() {
           <h1>Login</h1>
 
           <label>Email</label>
-          <input type="text" value={email} onChange={(event) => setUsername(event.target.value)} />
+          <input type="email" value={email} onChange={(event) => setUsername(event.target.value)} />
 
           <label>Password</label>
-          <input type="text" value={password} onChange={(event) => setPassword(event.target.value)} />
+          <input type="password" value={password} id="password" onChange={(event) => setPassword(event.target.value)} />
+          <p id="incorrectInputText"></p>
 
           <button type="submit" id="submitData" name="submitData" className="loginbtn">
             Login

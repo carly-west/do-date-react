@@ -31,8 +31,8 @@ export default function RegisterUser() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      return <Navigate to="/login" />;
-
       console.log("unsuccessful creation");
+
+      return <Navigate to="/login" />;
     });
 }
