@@ -4,51 +4,14 @@ import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
 import RemoveAssignment from "./RemoveAssignment";
+import OrganizeCheckboxDue from "./OrganizeCheckboxDue.js";
 
 export default function Weekdays() {
   const [user, loading, error] = useAuthState(auth);
 
-  const addClasses = async () => {
-    const classRef = doc(db, "classes", user.email);
-    const classDoc = await getDoc(classRef);
-    const classObject = classDoc.data();
-
-    if (classObject) {
-      // Clear all so that there aren't doubles
-      const collection = document.querySelectorAll(".weekdayUl");
-      for (let i = 0; i < collection.length; i++) {
-        collection[i].innerHTML = "";
-      }
-
-      // Display classes in days of the week
-      for (const [outerKey, value] of Object.entries(classObject)) {
-        for (const [key, assignmentValue] of Object.entries(value.Assignments)) {
-          const dayOfWeekID = document.getElementById(assignmentValue.DoDate);
-          const dayListItem = document.createElement("li");
-
-          dayListItem.value = key;
-          dayListItem.innerHTML = assignmentValue.Name;
-
-          dayOfWeekID.appendChild(dayListItem);
-          dayListItem.setAttribute("class", "class-color-" + value.Color + " assignments");
-          dayListItem.setAttribute("id", outerKey + "-" + assignmentValue.Name);
-          dayListItem.setAttribute("value", outerKey + "-" + assignmentValue.Name);
-
-          const dayOfWeekItem = document.getElementById(outerKey + "-" + assignmentValue.Name);
-          const dayListCheck = document.createElement("input");
-
-          dayOfWeekItem.appendChild(dayListCheck);
-          dayListCheck.setAttribute("type", "checkbox");
-          dayListCheck.setAttribute("name", "assignments");
-          dayListCheck.setAttribute("value", outerKey + "-" + key);
-        }
-      }
-    }
-  };
-
   //   Only call function if state renders that user is logged in
   if (user) {
-    addClasses();
+    OrganizeCheckboxDue(user);
   }
 
   return (

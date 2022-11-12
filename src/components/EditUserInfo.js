@@ -38,7 +38,7 @@ export default function EditUserInfo() {
       <h2>User Information</h2>
 
       <label>Name</label>
-      <input type="text" id="nameEdit" value="" readOnly required />
+      <input type="text" id="nameEdit" required />
 
       <button type="submit" id="submitData" name="submitData" className="loginbtn">
         Update Account

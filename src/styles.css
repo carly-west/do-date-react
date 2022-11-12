@@ -281,7 +281,7 @@ header a {
 /*
 Class color legend
 */
-
+/* 
 .class-color-Red {
   color: var(--classRed);
 }
@@ -302,7 +302,7 @@ Class color legend
 }
 .class-color-Purple {
   color: var(--classPurple);
-}
+} */
 
 /*
 Assignment Tracker

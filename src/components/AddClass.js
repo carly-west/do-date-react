@@ -3,6 +3,7 @@ import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from "
 import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
+import SetColorDropdown from "./SetColorDropdown.js";
 
 export default function AddClass() {
   const [newClassName, setName] = useState("");
@@ -40,31 +41,10 @@ export default function AddClass() {
         <h2>Create Class</h2>
 
         <label htmlFor="className">Class Name</label>
-
         <input type="text" name="className" id="className" value={newClassName} onChange={(e) => setName(e.target.value)} required />
 
         <label htmlFor="selectColor">Class Color</label>
-
-        <select name="selectColor" id="selectColor">
-          <option value="red" id="red">
-            Red
-          </option>
-          <option value="orange" id="orange">
-            Orange
-          </option>
-          <option value="yellow" id="yellow">
-            Yellow
-          </option>
-          <option value="green" id="green">
-            Green
-          </option>
-          <option value="blue" id="blue">
-            Blue
-          </option>
-          <option value="purple" id="purple">
-            Purple
-          </option>
-        </select>
+        <SetColorDropdown />
 
         <button type="submit" id="submitNewClass" name="createClass" className="createclass-btn">
           Create Class

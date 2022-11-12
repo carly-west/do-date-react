@@ -8,9 +8,16 @@ export default function ClassLegend() {
   const [user, loading, error] = useAuthState(auth);
 
   const classLegend = async () => {
+    // Class info
     const classRef = doc(db, "classes", user.email);
     const classDoc = await getDoc(classRef);
     const classObject = classDoc.data();
+
+    // Class color info
+    const userRef = doc(db, "users", user.email);
+    const userDoc = await getDoc(userRef);
+    const userObject = userDoc.data();
+    const userColors = userObject.UserColors;
 
     if (classObject) {
       // Display classes in legend
@@ -25,7 +32,12 @@ export default function ClassLegend() {
         listItem.value = key;
         listItem.innerHTML = value.Name;
         classLegend.appendChild(listItem);
-        listItem.setAttribute("class", "class-color-" + value.Color);
+
+        for (const [keyColor, valueColor] of Object.entries(userColors)) {
+          if (value.Color == keyColor) {
+            listItem.style.color = valueColor;
+          }
+        }
       }
     }
   };
