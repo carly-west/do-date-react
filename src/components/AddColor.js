@@ -6,8 +6,36 @@ import React, { useState } from "react";
 import SetColorDropdown from "./SetColorDropdown.js";
 
 export default function AddColor() {
+  const [user, loading, error] = useAuthState(auth);
+
   function handleSubmit(e) {
     e.preventDefault();
+
+    const addColor = async () => {
+      const userRef = doc(db, "users", user.email);
+      const userDoc = await getDoc(userRef);
+      const userObject = userDoc.data();
+      const userColors = userObject.UserColors;
+      console.log(userColors);
+
+      var colorName = document.getElementById("colorName").value;
+      var colorChoice = document.getElementById("colorChoice").value;
+      console.log(colorName);
+      console.log(colorChoice);
+
+      setDoc(
+        doc(db, "users", user.email),
+        {
+          // [`UserColors.Name`]: colorChoice,
+          // [`UserColors.${[colorName]}`]: colorChoice,
+          UserColors: { [colorName]: colorChoice },
+        },
+        { merge: true }
+      );
+    };
+    if (user) {
+      addColor();
+    }
     console.log(document.getElementById("colorChoice").value);
   }
   return (

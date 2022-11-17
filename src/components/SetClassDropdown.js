@@ -4,8 +4,9 @@ import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
 
-export default function SetClassDropdown() {
+export default function SetClassDropdown(props) {
   const [user, loading, error] = useAuthState(auth);
+
   const setDropdown = async () => {
     const classRef = doc(db, "classes", user.email);
     const classDoc = await getDoc(classRef);
@@ -13,17 +14,21 @@ export default function SetClassDropdown() {
 
     if (classObject) {
       // Display classes in dropdown
-      const select = document.getElementById("classesDropDown");
-
       // Clears options so everything is only rendered once
-      const selectAll = document.querySelectorAll("#classesDropDown option");
-      selectAll.forEach((o) => o.remove());
+      const selectAllOption = document.querySelectorAll(".classesDropDown option");
+      selectAllOption.forEach((o) => o.remove());
 
-      for (const [key, value] of Object.entries(classObject)) {
-        const opt = document.createElement("option");
-        opt.value = key;
-        opt.innerHTML = value.Name;
-        select.appendChild(opt);
+      var selectAllClasses = document.querySelectorAll(".classesDropDown");
+      var length = selectAllClasses.length;
+
+      for (var i = 0; i < length; i++) {
+        for (const [key, value] of Object.entries(classObject)) {
+          const opt = document.createElement("option");
+          opt.value = key;
+          opt.innerHTML = value.Name;
+          // opt.id = component.componentName;
+          selectAllClasses[i].appendChild(opt);
+        }
       }
     }
   };
@@ -32,5 +37,5 @@ export default function SetClassDropdown() {
   if (user) {
     setDropdown();
   }
-  return <select name="classes" id="classesDropDown"></select>;
+  return <select name="classes" id={props.id} className="classesDropDown"></select>;
 }
