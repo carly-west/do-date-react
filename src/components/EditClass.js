@@ -19,7 +19,8 @@ export default function EditClass() {
       const classRef = doc(db, "classes", user.email);
       const classDoc = await getDoc(classRef);
       const classObject = classDoc.data();
-      classToBeEdited = document.getElementById("classesDropDown");
+      classToBeEdited = document.getElementById("editClassDropdown");
+
       classToBeEditedSelection = classToBeEdited.options[classToBeEdited.selectedIndex].text;
 
       var classNameEdit = document.getElementById("classNameEdit").value;
@@ -44,7 +45,7 @@ export default function EditClass() {
       <div className="edit-class">
         <h2>Edit Class</h2>
         <label htmlFor="classes">Class to Edit</label>
-        <SetClassDropdown />
+        <SetClassDropdown id="editClassDropdown" />
 
         <label htmlFor="classNameEdit">New Class Name</label>
         <input type="text" name="classNameEdit" id="classNameEdit" required />

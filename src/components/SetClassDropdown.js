@@ -26,7 +26,6 @@ export default function SetClassDropdown(props) {
           const opt = document.createElement("option");
           opt.value = key;
           opt.innerHTML = value.Name;
-          // opt.id = component.componentName;
           selectAllClasses[i].appendChild(opt);
         }
       }

@@ -1,0 +1,23 @@
+Name: Carly Correa
+Project Title: DoDate
+
+Team Members: Myself!
+
+Overall Status: On-schedule
+
+Number of hours worked since last update: 5
+Number of hours worked on the project thus far: 85
+Total number of hours anticipated for completion: 126
+
+Accomplishments:
+1. This week I did my best to squash some bugs that I found.
+2. I spent time getting my project propsal file and the requirements spec doc ready to submit.
+
+Challenges:
+Those bugs were trickier to find and solve than I anticipated.
+
+Plans / Goals for next week:
+Continue working on the project, and add a few more functionalities!
+
+Accountability plan: (What is your plan to keep yourself honest and follow through with the goals that you have outlined?)
+I will continue to keep track of the hours that I spend on the website!

@@ -4,7 +4,7 @@ import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
 
-export default function SetColorDropdown() {
+export default function SetColorDropdown(props) {
   const [user, loading, error] = useAuthState(auth);
   const setDropdown = async () => {
     const userRef = doc(db, "users", user.email);
@@ -14,18 +14,22 @@ export default function SetColorDropdown() {
 
     if (userColors) {
       // Display colors in dropdown
-      const select = document.getElementById("selectColor");
 
       // Clears options so everything is only rendered once
-      const selectAll = document.querySelectorAll("#selectColor option");
+      const selectAll = document.querySelectorAll(".colorDropDown option");
       selectAll.forEach((o) => o.remove());
 
-      for (const [key, value] of Object.entries(userColors)) {
-        const opt = document.createElement("option");
-        opt.innerHTML = key;
-        select.appendChild(opt);
-        opt.setAttribute("value", key.toLowerCase());
-        opt.setAttribute("id", key.toLowerCase());
+      var selectAllColors = document.querySelectorAll(".colorDropDown");
+      var length = selectAllColors.length;
+
+      for (var i = 0; i < length; i++) {
+        for (const [key, value] of Object.entries(userColors)) {
+          const opt = document.createElement("option");
+          opt.innerHTML = key;
+          opt.setAttribute("value", key.toLowerCase());
+          opt.setAttribute("id", key.toLowerCase());
+          selectAllColors[i].appendChild(opt);
+        }
       }
     }
   };
@@ -34,5 +38,5 @@ export default function SetColorDropdown() {
   if (user) {
     setDropdown();
   }
-  return <select name="selectColor" id="selectColor"></select>;
+  return <select name="selectColor" id={props.id} className="colorDropDown"></select>;
 }

@@ -20,14 +20,10 @@ export default function AddColor() {
 
       var colorName = document.getElementById("colorName").value;
       var colorChoice = document.getElementById("colorChoice").value;
-      console.log(colorName);
-      console.log(colorChoice);
 
       setDoc(
         doc(db, "users", user.email),
         {
-          // [`UserColors.Name`]: colorChoice,
-          // [`UserColors.${[colorName]}`]: colorChoice,
           UserColors: { [colorName]: colorChoice },
         },
         { merge: true }

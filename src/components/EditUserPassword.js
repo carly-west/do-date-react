@@ -18,7 +18,7 @@ export default function EditUserPassword() {
     /* 
     DEFAULT PASSWORD!!!
      */
-    const newPassword = "Leonardo!123";
+    const newPassword = "password";
 
     updatePassword(user, newPassword)
       .then(() => {

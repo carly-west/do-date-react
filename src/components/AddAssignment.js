@@ -4,6 +4,7 @@ import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
 import SetClassDropdown from "./SetClassDropdown.js";
+import FindMaxNum from "./FindMaxNum";
 
 export default function AddAssignment() {
   const [user, loading, error] = useAuthState(auth);
@@ -15,23 +16,35 @@ export default function AddAssignment() {
       const classRef = doc(db, "classes", user.email);
       const classDoc = await getDoc(classRef);
       const classObject = classDoc.data();
+
       // Sets the new class name to be added
       let assignmentName = document.getElementById("addAssignment").value;
       let classEdited = document.getElementById("classesDropDown");
       let assignmentToBeAdded = classEdited.options[classEdited.selectedIndex].text;
+
       // // Sets the DO day of the week of the assignment to be added
       let doDayEdited = document.getElementById("dayDropDown");
       let doDayToBeAdded = doDayEdited.options[doDayEdited.selectedIndex].text;
+
       // // Sets the DUE day of the week of the assignment to be added
       let dueDayEdited = document.getElementById("DueDayDropDown");
       let dueDayToBeAdded = dueDayEdited.options[dueDayEdited.selectedIndex].text;
+
       // Finds the field associated with the value
       for (const [key, value] of Object.entries(classObject)) {
         if (value.Name == assignmentToBeAdded) {
           var assignmentNameUpdated = key;
         }
       }
-      let newAssignmentName = "assignment" + (Object.keys(classObject[assignmentNameUpdated].Assignments).length + 1);
+
+      var assignmentIdList = Object.keys(classObject[assignmentNameUpdated].Assignments);
+      console.log(assignmentIdList);
+
+      // Finds last assignment number
+      var maxAssignmentNum = FindMaxNum(assignmentIdList, 10);
+
+      let newAssignmentName = "assignment" + (maxAssignmentNum + 1);
+
       // Update document without changing any other fields
       updateDoc(doc(db, "classes", user.email), {
         [`${[assignmentNameUpdated]}.Assignments.${[newAssignmentName]}`]: { Name: assignmentName, DoDate: doDayToBeAdded, DueDate: dueDayToBeAdded },
@@ -49,7 +62,7 @@ export default function AddAssignment() {
             <label htmlFor="classes" className="add-assignment-class-label">
               Class:
             </label>
-            <SetClassDropdown />
+            <SetClassDropdown id="classesDropDown" />
             <br />
 
             <div className="add-assignment-name">
