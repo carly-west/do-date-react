@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/dodate-react/static/css/main.b904e1bc.css",
+    "main.js": "/dodate-react/static/js/main.b14ee0ee.js",
+    "static/media/dodate-logo.png": "/dodate-react/static/media/dodate-logo.5b1c87cfd3df82eb914d.png",
+    "index.html": "/dodate-react/index.html",
+    "main.b904e1bc.css.map": "/dodate-react/static/css/main.b904e1bc.css.map",
+    "main.b14ee0ee.js.map": "/dodate-react/static/js/main.b14ee0ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b904e1bc.css",
+    "static/js/main.b14ee0ee.js"
+  ]
+}
