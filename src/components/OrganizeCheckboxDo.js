@@ -1,9 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { db, auth, app } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from "react";
-import SetClassDropdown from "./SetClassDropdown.js";
 
 export default function OrganizeCheckboxDo(user) {
   // const [user, loading, error] = useAuthState(auth);

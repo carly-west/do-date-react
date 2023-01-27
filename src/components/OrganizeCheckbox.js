@@ -3,7 +3,6 @@ import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } fro
 import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
-import SetClassDropdown from "./SetClassDropdown.js";
 import OrganizeCheckboxDo from "./OrganizeCheckboxDo.js";
 import OrganizeCheckboxDue from "./OrganizeCheckboxDue.js";
 

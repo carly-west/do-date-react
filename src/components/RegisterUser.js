@@ -3,9 +3,7 @@ import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } fro
 import { db, auth, app } from "./firebase.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
-import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState } from "react";
-import SetClassDropdown from "./SetClassDropdown.js";
 import { Navigate } from "react-router-dom";
 
 export default function RegisterUser() {
