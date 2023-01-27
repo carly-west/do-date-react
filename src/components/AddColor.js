@@ -2,8 +2,6 @@
 import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from "react";
-import SetColorDropdown from "./SetColorDropdown.js";
 
 export default function AddColor() {
   const [user, loading, error] = useAuthState(auth);
