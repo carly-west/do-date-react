@@ -1,10 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { doc, getDoc, getFirestore, query, collection, getDocs, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { query, collection, getDocs, where } from "firebase/firestore";
 import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useEffect, useState } from "react";
 
 export default function GetUserName() {
   const [user, loading, error] = useAuthState(auth);

@@ -3,7 +3,7 @@ import { CheckLogin } from "./CheckLogin";
 import logo from "../images/dodate-logo.png";
 import Logout from "../pages/Logout";
 
-import { doc, getDoc, getFirestore, query, collection, getDocs, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { doc, getDoc, getFirestore, query, collection, getDocs, where } from "firebase/firestore";
 import { db, auth, app } from "./firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useEffect, useState } from "react";

@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from "firebase/firestore";
 import { db, auth, app } from "./firebase.js";
 
 export default function OrganizeCheckboxDo(user) {

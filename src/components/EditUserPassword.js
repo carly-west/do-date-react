@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import { db, auth, app } from "./firebase.js";
 import { getAuth, updatePassword, reauthenticateWithCredential } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";

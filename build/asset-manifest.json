@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/dodate-react/static/js/main.9cdb2cfb.js",
+    "static/media/dodate-logo.png": "/dodate-react/static/media/dodate-logo.5b1c87cfd3df82eb914d.png",
+    "index.html": "/dodate-react/index.html",
+    "main.9cdb2cfb.js.map": "/dodate-react/static/js/main.9cdb2cfb.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.9cdb2cfb.js"
+  ]
+}

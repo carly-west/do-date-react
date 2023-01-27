@@ -3,7 +3,7 @@ import { db, auth, app } from "../components/firebase";
 import { Navigate, useNavigate } from "react-router-dom";
 
 // Import the functions you need from the SDKs you need
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
   const [email, setUsername] = useState("");

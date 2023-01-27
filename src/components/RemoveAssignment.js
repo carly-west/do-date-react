@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { db, auth, app } from "./firebase.js";
-import { doc, getDoc, setDoc, query, collection, getDocs, deleteField, updateDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { doc, getDoc, setDoc, query, collection, getDocs, deleteField, updateDoc } from "firebase/firestore";
 
 export default function RemoveAssignment(user) {
   //   const [user, loading, error] = useAuthState(auth);
