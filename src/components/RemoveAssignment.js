@@ -26,6 +26,8 @@ export default function RemoveAssignment(user) {
           [`${[classId]}.Assignments.${[assignmentId]}`]: deleteField(),
         });
       });
+
+      window.location.reload(false);
     }
   };
   if (user) {
