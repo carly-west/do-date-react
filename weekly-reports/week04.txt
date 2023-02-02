@@ -1,0 +1,32 @@
+Name: Carly Correa
+Project Title: DoDate
+
+Team Members: Myself!
+
+Overall Status: On-schedule
+
+Number of hours worked since last update: 4
+Number of hours worked on the project thus far: 92
+Total number of hours anticipated for completion: 126
+
+Accomplishments:
+1. I got my website hosting on Github pages
+
+Challenges:
+So many challenges this week... I wasn't able to build my project because of a small issue with the way I was importing firestore into my app, and it took a long time to figure it out. I also found out that Github pages doesn't support single page applications, so I will need to find a workaround for that. Right now when I navigate to another page and refresh, it just shows the Github error page.
+
+Plans / Goals for next week:
+Figure out how to allow single page app with Github pages.
+
+Accountability plan: (What is your plan to keep yourself honest and follow through with the goals that you have outlined?)
+I will continue to keep track of the hours that I spend on the website, and track my accomplishments.
+
+Tasks:
+Done - Allow user input for “Assignments” page and update firestore database
+Currently working on- Allow user input for “Courses” page and update firestore database
+Not started - Allow user to remove assignments, and update database
+Currently working on- Complete firebase authentication (allow user to login/log out and create an account)
+Not started - Add delete user functionality
+Not started - Complete documentation of application in the readme file
+Currently working on - Host website on a web hosting service
+Not started - Main page displays information about the "DoDate" methodology
