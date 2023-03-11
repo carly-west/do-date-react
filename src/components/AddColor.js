@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from "firebase/firestore";
-import { db, auth, app } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from 'firebase/firestore';
+import { db, auth, app } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function AddColor() {
   const [user, loading, error] = useAuthState(auth);
@@ -10,17 +10,17 @@ export default function AddColor() {
     e.preventDefault();
 
     const addColor = async () => {
-      const userRef = doc(db, "users", user.email);
+      const userRef = doc(db, 'users', user.email);
       const userDoc = await getDoc(userRef);
       const userObject = userDoc.data();
       const userColors = userObject.UserColors;
       console.log(userColors);
 
-      var colorName = document.getElementById("colorName").value;
-      var colorChoice = document.getElementById("colorChoice").value;
+      var colorName = document.getElementById('colorName').value;
+      var colorChoice = document.getElementById('colorChoice').value;
 
       setDoc(
-        doc(db, "users", user.email),
+        doc(db, 'users', user.email),
         {
           UserColors: { [colorName]: colorChoice },
         },
@@ -30,7 +30,7 @@ export default function AddColor() {
     if (user) {
       addColor();
     }
-    console.log(document.getElementById("colorChoice").value);
+    console.log(document.getElementById('colorChoice').value);
   }
   return (
     <form id="add-class" onSubmit={handleSubmit}>

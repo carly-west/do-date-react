@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { db, auth, app } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from "react";
-import OrganizeCheckboxDo from "./OrganizeCheckboxDo.js";
-import OrganizeCheckboxDue from "./OrganizeCheckboxDue.js";
+import { db, auth, app } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import OrganizeCheckboxDo from './OrganizeCheckboxDo.js';
+import OrganizeCheckboxDue from './OrganizeCheckboxDue.js';
 
 export default function OrganizeCheckbox() {
   const [user, loading, error] = useAuthState(auth);

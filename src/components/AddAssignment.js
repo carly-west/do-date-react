@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from "firebase/firestore";
-import { db, auth } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import SetClassDropdown from "./SetClassDropdown.js";
-import FindMaxNum from "./FindMaxNum";
+import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from 'firebase/firestore';
+import { db, auth } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import SetClassDropdown from './SetClassDropdown.js';
+import FindMaxNum from './FindMaxNum';
 
 export default function AddAssignment() {
   const [user, loading, error] = useAuthState(auth);
@@ -12,21 +12,21 @@ export default function AddAssignment() {
     e.preventDefault();
 
     const editClass = async () => {
-      const classRef = doc(db, "classes", user.email);
+      const classRef = doc(db, 'classes', user.email);
       const classDoc = await getDoc(classRef);
       const classObject = classDoc.data();
 
       // Sets the new class name to be added
-      let assignmentName = document.getElementById("addAssignment").value;
-      let classEdited = document.getElementById("classesDropDown");
+      let assignmentName = document.getElementById('addAssignment').value;
+      let classEdited = document.getElementById('classesDropDown');
       let assignmentToBeAdded = classEdited.options[classEdited.selectedIndex].text;
 
       // // Sets the DO day of the week of the assignment to be added
-      let doDayEdited = document.getElementById("dayDropDown");
+      let doDayEdited = document.getElementById('dayDropDown');
       let doDayToBeAdded = doDayEdited.options[doDayEdited.selectedIndex].text;
 
       // // Sets the DUE day of the week of the assignment to be added
-      let dueDayEdited = document.getElementById("DueDayDropDown");
+      let dueDayEdited = document.getElementById('DueDayDropDown');
       let dueDayToBeAdded = dueDayEdited.options[dueDayEdited.selectedIndex].text;
 
       // Finds the field associated with the value
@@ -35,17 +35,15 @@ export default function AddAssignment() {
           var assignmentNameUpdated = key;
         }
       }
-
       var assignmentIdList = Object.keys(classObject[assignmentNameUpdated].Assignments);
-      console.log(assignmentIdList);
 
       // Finds last assignment number
       var maxAssignmentNum = FindMaxNum(assignmentIdList, 10);
 
-      let newAssignmentName = "assignment" + (maxAssignmentNum + 1);
+      let newAssignmentName = 'assignment' + (maxAssignmentNum + 1);
 
       // Update document without changing any other fields
-      updateDoc(doc(db, "classes", user.email), {
+      updateDoc(doc(db, 'classes', user.email), {
         [`${[assignmentNameUpdated]}.Assignments.${[newAssignmentName]}`]: { Name: assignmentName, DoDate: doDayToBeAdded, DueDate: dueDayToBeAdded },
       });
     };

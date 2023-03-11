@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from "firebase/firestore";
-import { db, auth, app } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from "react";
-import SetColorDropdown from "./SetColorDropdown.js";
-import FindMaxNum from "./FindMaxNum";
+import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from 'firebase/firestore';
+import { db, auth, app } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import SetColorDropdown from './SetColorDropdown.js';
+import FindMaxNum from './FindMaxNum';
 
 export default function AddClass() {
   const [user, loading, error] = useAuthState(auth);
@@ -12,31 +12,37 @@ export default function AddClass() {
   function handleSubmit(e) {
     e.preventDefault();
     const setClasses = async () => {
-      const classRef = doc(db, "classes", user.email);
+      const classRef = doc(db, 'classes', user.email);
       const classDoc = await getDoc(classRef);
-      const classObject = classDoc.data();
 
-      var classIdList = Object.keys(classObject);
+      if (classDoc.exists()) {
+        const classObject = classDoc.data();
 
-      // Finds last class number
-      var maxClassNum = FindMaxNum(classIdList, 5);
+        var classIdList = Object.keys(classObject);
 
-      var lastClassName = "class".concat(maxClassNum);
-      console.log(lastClassName);
+        // Finds last class number
+        var maxClassNum = FindMaxNum(classIdList, 5);
 
-      if (typeof lastClassName == "string") {
-        console.log(lastClassName.match(/\d+/)[0]);
+        var lastClassName = 'class'.concat(maxClassNum);
+        console.log(lastClassName);
+
+        if (typeof lastClassName == 'string') {
+          console.log(lastClassName.match(/\d+/)[0]);
+        }
+      } else {
+        // If there isn't a document created for the user, set the class number to 0.
+        var maxClassNum = 0;
       }
 
       // Get the user choices
-      var newClassName = "class" + (maxClassNum + 1);
-      var className = document.getElementById("className").value;
-      var classColor = document.getElementById("addClass");
+      var newClassName = 'class' + (maxClassNum + 1);
+      var className = document.getElementById('className').value;
+      var classColor = document.getElementById('addClass');
 
       var classColorSet = classColor.options[classColor.selectedIndex].text;
 
       setDoc(
-        doc(db, "classes", user.email),
+        doc(db, 'classes', user.email),
         {
           // Capitalizes first letter of name
           [newClassName]: { Name: className.charAt(0).toUpperCase() + className.slice(1), Color: classColorSet, Assignments: {} },
