@@ -1,7 +1,8 @@
-import EditUserInfo from "../components/EditUserInfo";
+import EditUserInfo from '../components/EditUserInfo';
+import DeleteUser from '../components/DeleteUser';
 
 // Import the functions you need from the SDKs you need
-import EditUserPassword from "../components/EditUserPassword";
+import EditUserPassword from '../components/EditUserPassword';
 
 export default function UserPage() {
   return (
@@ -17,6 +18,12 @@ export default function UserPage() {
       <div className="class-editor-body">
         <div className="class-editor-content">
           <EditUserPassword />
+        </div>
+      </div>
+
+      <div className="class-editor-body">
+        <div className="class-editor-content">
+          <DeleteUser />
         </div>
       </div>
     </div>

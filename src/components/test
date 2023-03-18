@@ -1,0 +1,56 @@
+// Import the functions you need from the SDKs you need
+import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from 'firebase/firestore';
+import { db, auth, app } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuth, deleteUser } from 'firebase/auth';
+
+export default function DeleteUser() {
+  const [user, loading, error] = useAuthState(auth);
+
+  //   Set name in user information input
+  const setName = async () => {
+    const nameRef = doc(db, 'users', user.email);
+    const nameDoc = await getDoc(nameRef);
+    const nameObject = nameDoc.data();
+  };
+  if (user) {
+    // setName();
+    const user = auth.currentUser;
+
+    deleteUser(user)
+      .then(() => {
+        // User deleted.
+        console.log('Account Deleted');
+      })
+      .catch((error) => {
+        // An error ocurred
+        // ...
+        console.log('Account Unable to be Deleted');
+
+      });
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const editUserInfo = async () => {
+      var nameEdit = document.getElementById('nameEdit').value;
+
+      // Update document without changing any other fields
+      updateDoc(doc(db, 'users', user.email), {
+        name: nameEdit,
+      });
+    };
+
+    editUserInfo();
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Delete Account</h2>
+
+      <button type="submit" id="submitData" name="submitData" className="loginbtn">
+        <Link to={'/Register'}>Delete Account</Link>
+      </button>
+    </form>
+  );
+}
