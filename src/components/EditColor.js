@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc, deleteField } from "firebase/firestore";
-import { db, auth, app } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from "react";
-import SetClassDropdown from "./SetClassDropdown.js";
-import SetColorDropdown from "./SetColorDropdown.js";
+import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc, deleteField } from 'firebase/firestore';
+import { db, auth, app } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import SetClassDropdown from './SetClassDropdown.js';
+import SetColorDropdown from './SetColorDropdown.js';
 
 export default function EditColor() {
   const [user, loading, error] = useAuthState(auth);
@@ -17,24 +17,38 @@ export default function EditColor() {
     var colorNameUpdated;
 
     const editColor = async () => {
-      const userRef = doc(db, "users", user.email);
+      const userRef = doc(db, 'users', user.email);
       const userDoc = await getDoc(userRef);
       const userObject = userDoc.data();
       const userColors = userObject.UserColors;
-      colorToBeEdited = document.getElementById("editColor");
+
+      const classRef = doc(db, 'classes', user.email);
+      const classDoc = await getDoc(classRef);
+      const classObject = classDoc.data();
+
+      colorToBeEdited = document.getElementById('editColor');
       colorToBeEditedSelection = colorToBeEdited.options[colorToBeEdited.selectedIndex].text;
 
-      var colorNameEdit = document.getElementById("colorNameEdit").value;
-      var newColorChoice = document.getElementById("newColorChoice").value;
+      var colorNameEdit = document.getElementById('colorNameEdit').value;
+      var newColorChoice = document.getElementById('newColorChoice').value;
+
+      // Finds the field associated with the value
+      for (const [key, value] of Object.entries(classObject)) {
+        if (value.Color == colorToBeEditedSelection) {
+          await updateDoc(doc(db, 'classes', user.email), {
+            [`${[key]}.Color`]: colorNameEdit,
+          });
+        }
+      }
 
       // Deletes and then adds color
       // Update document without changing any other fields
-      await updateDoc(doc(db, "users", user.email), {
+      await updateDoc(doc(db, 'users', user.email), {
         [`UserColors.${[colorToBeEditedSelection]}`]: deleteField(),
       });
 
       await setDoc(
-        doc(db, "users", user.email),
+        doc(db, 'users', user.email),
         {
           UserColors: { [colorNameEdit]: newColorChoice },
         },
