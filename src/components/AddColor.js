@@ -1,10 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db, auth, app } from './firebase.js';
+import { db, auth } from './firebase.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function AddColor() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   function handleSubmit(e) {
     e.preventDefault();

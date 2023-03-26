@@ -1,13 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, addDoc } from 'firebase/firestore';
-import { db, auth, app } from './firebase.js';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db, auth } from './firebase.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import React, { useState } from 'react';
+import React from 'react';
 import SetColorDropdown from './SetColorDropdown.js';
 import FindMaxNum from './FindMaxNum';
 
 export default function AddClass() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +31,7 @@ export default function AddClass() {
         }
       } else {
         // If there isn't a document created for the user, set the class number to 0.
-        var maxClassNum = 0;
+        maxClassNum = 0;
       }
 
       // Get the user choices

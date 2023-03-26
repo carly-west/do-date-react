@@ -2,12 +2,10 @@
 // import { Link, Navigate } from 'react-router-dom';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-import { db, auth, app } from './firebase.js';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { getAuth, deleteUser } from 'firebase/auth';
+import { auth } from './firebase.js';
+import { deleteUser } from 'firebase/auth';
 
 export default function DeleteUser() {
-  const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
   function handleSubmit(e) {

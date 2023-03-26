@@ -1,14 +1,9 @@
-import { db, auth, app } from './firebase.js';
-import { doc, getDoc, setDoc, query, collection, getDocs, deleteField, updateDoc } from 'firebase/firestore';
+import { db } from './firebase.js';
+import { doc, deleteField, updateDoc } from 'firebase/firestore';
 
 export default function RemoveAssignment(user) {
-  //   const [user, loading, error] = useAuthState(auth);
-
   const editClass = async () => {
     if (user) {
-      const classRef = doc(db, 'classes', user.email);
-      const classDoc = await getDoc(classRef);
-
       var checkedAssignemnts = document.querySelectorAll('input[name="assignments"]:checked');
       let checkedAssignmentsArray = [];
 

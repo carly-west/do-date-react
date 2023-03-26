@@ -1,12 +1,12 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db, auth } from './firebase.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import SetClassDropdown from './SetClassDropdown.js';
 import FindMaxNum from './FindMaxNum';
 
 export default function AddAssignment() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +31,7 @@ export default function AddAssignment() {
 
       // Finds the field associated with the value
       for (const [key, value] of Object.entries(classObject)) {
-        if (value.Name == assignmentToBeAdded) {
+        if (value.Name === assignmentToBeAdded) {
           var assignmentNameUpdated = key;
         }
       }

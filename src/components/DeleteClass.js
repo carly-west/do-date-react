@@ -1,30 +1,30 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, updateDoc, where, deleteField } from "firebase/firestore";
-import { db, auth, app } from "./firebase.js";
-import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from "react";
-import SetClassDropdown from "./SetClassDropdown.js";
+import { doc, getDoc, updateDoc, deleteField } from 'firebase/firestore';
+import { db, auth } from './firebase.js';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import React from 'react';
+import SetClassDropdown from './SetClassDropdown.js';
 
 export default function DeleteClass() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   var classNameUpdated;
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    var classToBeEdited = document.getElementById("deleteClass");
+    var classToBeEdited = document.getElementById('deleteClass');
     var classToBeEditedSelection = classToBeEdited.options[classToBeEdited.selectedIndex].text;
 
     const removeClass = async () => {
-      const classRef = doc(db, "classes", user.email);
+      const classRef = doc(db, 'classes', user.email);
       const classDoc = await getDoc(classRef);
       const classObject = classDoc.data();
 
-      const classToBeDeletedRef = doc(db, "classes", user.email);
+      const classToBeDeletedRef = doc(db, 'classes', user.email);
 
       // Finds the field associated with the value
       for (const [key, value] of Object.entries(classObject)) {
-        if (value.Name == classToBeEditedSelection) {
+        if (value.Name === classToBeEditedSelection) {
           classNameUpdated = key;
         }
       }

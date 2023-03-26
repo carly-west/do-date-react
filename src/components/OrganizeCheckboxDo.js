@@ -1,10 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from 'firebase/firestore';
-import { db, auth, app } from './firebase.js';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from './firebase.js';
 
 export default function OrganizeCheckboxDo(user) {
-  // const [user, loading, error] = useAuthState(auth);
-
   const organizeCheckboxDo = async () => {
     // Class color info
     const userRef = doc(db, 'users', user.email);
@@ -30,7 +28,7 @@ export default function OrganizeCheckboxDo(user) {
         dayOfWeekID.appendChild(dayListItem);
         dayListItem.setAttribute('class', 'class-color-' + value.Color + ' assignments');
         for (const [keyColor, valueColor] of Object.entries(userColors)) {
-          if (value.Color == keyColor) {
+          if (value.Color === keyColor) {
             dayListItem.style.color = valueColor;
           }
         }

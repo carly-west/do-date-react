@@ -1,9 +1,9 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc } from 'firebase/firestore';
-import { db, auth, app } from './firebase.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { db, auth } from './firebase.js';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 export default function RegisterUser() {
@@ -27,8 +27,8 @@ export default function RegisterUser() {
       return <Navigate to="/classEditor" />;
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.log(error.code);
+      console.log(error.message);
       console.log('unsuccessful creation');
 
       return <Navigate to="/login" />;

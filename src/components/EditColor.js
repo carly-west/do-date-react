@@ -1,27 +1,20 @@
 // Import the functions you need from the SDKs you need
-import { doc, getDoc, setDoc, query, collection, getDocs, where, updateDoc, deleteField } from 'firebase/firestore';
-import { db, auth, app } from './firebase.js';
+import { doc, getDoc, setDoc, updateDoc, deleteField } from 'firebase/firestore';
+import { db, auth } from './firebase.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import React, { useState } from 'react';
-import SetClassDropdown from './SetClassDropdown.js';
+import React from 'react';
 import SetColorDropdown from './SetColorDropdown.js';
 
 export default function EditColor() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   function handleSubmit(e) {
     e.preventDefault();
 
     var colorToBeEdited;
     var colorToBeEditedSelection;
-    var colorNameUpdated;
 
     const editColor = async () => {
-      const userRef = doc(db, 'users', user.email);
-      const userDoc = await getDoc(userRef);
-      const userObject = userDoc.data();
-      const userColors = userObject.UserColors;
-
       const classRef = doc(db, 'classes', user.email);
       const classDoc = await getDoc(classRef);
       const classObject = classDoc.data();
@@ -34,7 +27,7 @@ export default function EditColor() {
 
       // Finds the field associated with the value
       for (const [key, value] of Object.entries(classObject)) {
-        if (value.Color == colorToBeEditedSelection) {
+        if (value.Color === colorToBeEditedSelection) {
           await updateDoc(doc(db, 'classes', user.email), {
             [`${[key]}.Color`]: colorNameEdit,
           });

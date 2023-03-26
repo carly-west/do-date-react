@@ -1,14 +1,12 @@
 // Import the functions you need from the SDKs you need
-import { db, auth, app } from './firebase.js';
-import { getAuth, updatePassword, reauthenticateWithCredential } from 'firebase/auth';
+import { auth } from './firebase.js';
+import { updatePassword } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-
-import SetClassDropdown from './SetClassDropdown.js';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function EditUserPassword() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   function handleSubmit(e) {

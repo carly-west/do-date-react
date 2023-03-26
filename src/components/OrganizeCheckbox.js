@@ -1,12 +1,12 @@
 // Import the functions you need from the SDKs you need
-import { db, auth, app } from './firebase.js';
+import { auth } from './firebase.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import React, { useState } from 'react';
+import React from 'react';
 import OrganizeCheckboxDo from './OrganizeCheckboxDo.js';
 import OrganizeCheckboxDue from './OrganizeCheckboxDue.js';
 
 export default function OrganizeCheckbox() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   return (
     <div className="displayType">
@@ -22,7 +22,6 @@ export default function OrganizeCheckbox() {
         ></span>
       </label>
       <br />
-      {/* THIS RADIO BUTTON IS CLICKABLE!!! */}
       <label className="container-radio">
         Due Date
         <input type="radio" name="radio" id="organizeCheckboxDue" />
